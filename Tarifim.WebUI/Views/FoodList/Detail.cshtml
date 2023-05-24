@@ -1,0 +1,77 @@
+﻿@model FoodDetailModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-head">
+                    <div style="text-align:center;justify-items:center;;margin-top:10px;">
+
+                        @if (string.IsNullOrWhiteSpace(Model.ImagePath))
+                        {
+                            <img class="mx-auto d-block" style="width:300px; height:300px;margin:auto;border-radius:50px;" src="~/images/noPhoto.png" />
+                        }
+                        else
+                        {
+                            <img class="mx-auto d-block" style="width:300px; height:300px;margin:auto;border-radius:50px;" src="~/images/foods/@Model.ImagePath" />
+                        }
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div>
+
+
+                        <div style="text-align: center;">
+                            <h2>@Model.Name</h2>
+                        </div>
+
+                        <hr />
+
+                        <div style="text-align: center;">
+                            @Model.Content
+                        </div>
+
+                        <hr />
+
+                        <div style="text-align: center;">
+                            @Model.Description
+                        </div>
+
+                        <hr />
+
+                        <div style="text-align: center;">
+                            @Model.CategoryName
+                        </div>
+
+                        <hr />
+
+                        <div style="text-align: center;">
+
+                            @if (!string.IsNullOrWhiteSpace(@Model.ModifiedDate.ToString()))
+                            {
+                                <p>
+                                    <small class="text-muted">
+                                        Son Güncelleme :
+                                        @Model.ModifiedDate.Value.Day gün önce
+                                    </small>
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    <small class="text-muted"> Bu ürün güncellenmemiştir! </small>
+                                </p>
+                            }
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

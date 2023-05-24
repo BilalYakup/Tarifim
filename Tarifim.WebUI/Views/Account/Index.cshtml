@@ -1,0 +1,57 @@
+﻿
+
+@model AccountViewModel
+
+<div class="container" style="padding-top:50px;width:500px">
+    <div class="card" style="border:solid 2px">
+        <div class="card-header fw-bold fs-5">
+            Hesap Oluşturun
+        </div>
+        <div class="card-body">
+
+            <form method="post" asp-controller="Account" asp-action="Index">
+
+                <div>
+                    <div>
+                        <div class="form-group mt-2">
+                            <label asp-for="Name" class="mb-1"></label>
+                            <input asp-for="Name" type="text" class="form-control" >
+                            <span class="text-danger fw-bold mt-1" asp-validation-for="Name"></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="form-group mt-2">
+                            <label asp-for="SurName" class="mb-1"></label>
+                            <input asp-for="SurName" type="text" class="form-control">
+                            <span class="text-danger fw-bold mt-1" asp-validation-for="SurName"></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="form-group mt-2">
+                            <label asp-for="Email" class="mb-1"></label>
+                            <input asp-for="Email" type="text" class="form-control" >
+                            <span class="text-danger fw-bold mt-1" asp-validation-for="Email"></span>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+
+                <div class="row">
+                    <div>
+                        <div class="text-right mt-3">
+                            <button type="submit" class="btn btn-warning">Güncelle</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+
+
+        </div>
+    </div>
+</div>

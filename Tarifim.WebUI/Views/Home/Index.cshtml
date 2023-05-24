@@ -1,0 +1,27 @@
+﻿@using Tarifim.WebUI.Extensions;
+@model List<CategoryListModel>
+
+
+@foreach (var category in Model)
+{
+   
+    <div class="card container mt-4" style="width: 40rem;border:1px solid white">
+        @if (string.IsNullOrWhiteSpace(category.ImagePath))
+        {
+            <img src="~/images/noPhoto.png" class="card-img-top" />
+        }
+        else
+        {
+            <img src="~/images/categories/@category.ImagePath" alt="@category.Name" class="card-img-top" />
+        }
+
+        
+        <div class="card-body">
+            <h5 class="card-title" style="text-align:center">
+                <a asp-controller="FoodList" asp-action="List" asp-route-id="@category.Id" type="submit" class="btn btn-outline-success " style="width:300px;height:50px">@category.Name</a>
+            </h5>
+        </div>
+    </div>
+}
+
+

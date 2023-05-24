@@ -1,0 +1,85 @@
+﻿@model List<FoodListViewModel>
+
+<div class="row">
+    <div class="col-sm-8 container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Yemekler</h3>
+            </div>
+            <div class="card-body">
+                <div class="table table-responsive table-responsive-sm">
+                    <table class="table table-striped">
+                        <thead>
+
+                            <tr>
+                                <th style="width:400px">Yemek Resim</th>
+                                <th style="width:400px">Yemek Adı</th>
+                                <th style="width:400px">Malzemeler</th>
+                                <th style="width:400px">Tarif</th>
+                                <th style="width:400px">Kategori</th>
+                                <th style="width:400px">Düzenle</th>
+                                <th style="width:400px">Sil</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var food in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @if (string.IsNullOrWhiteSpace(food.FoodImage))
+                                        {
+                                            <img src="~/images/noPhoto.png" style="width:120px; height:120px;border-radius:50px;" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/images/foods/@food.FoodImage" alt="@food.Name" style="width:120px; height:120px;border-radius:50px;" />
+                                        }
+                                    </td>
+
+                                    <td>@food.Name</td>
+                                    <td>@food.Content</td>
+                                    <td>@food.Description</td>
+                                    <td>@food.CategoryName</td>
+                                    <td>
+                                        <a asp-area="Admin" asp-controller="Food" asp-action="UpdateFood" asp-route-id="@food.Id" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Güncelle</a>
+                                    </td>
+                                    <td>
+                                        <a asp-area="Admin" asp-controller="Category" asp-action="DeleteFood" asp-route-id="@food.Id" class="btn btn-sm btn-danger"><i class="bi bi-trash3"></i> Sil</a>
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a asp-controller="Dashboard" asp-action="Index" class="btn btn-sm btn-primary mt-3" style="float:right">Geri Dön</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

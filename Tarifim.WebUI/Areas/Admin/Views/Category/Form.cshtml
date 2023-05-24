@@ -1,0 +1,55 @@
+﻿@model CategoryFormViewModel
+
+<div class="container" style="margin-top:200px;">
+    <div class="card" style="border:solid 2px">
+
+        <div class="card-header fw-bold fs-5">
+            @(Model.Id == 0 ? "Kategori Ekleme Formu" : "Kategori Düzenleme Formu")
+        </div>
+
+        <div class="card-body">
+            <form method="post" asp-area="Admin" asp-controller="Category" asp-action="Add" enctype="multipart/form-data">
+
+                @if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMessage))
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.ErrorMessage
+                    </div>
+                }
+
+                <input asp-for="Id" type="hidden" />
+
+                <div class="form-group mb-2">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" type="text" required />
+                </div>
+
+                <div class="form-group mb-2">
+                    <label asp-for="File"></label>
+
+                    @if (Model.Id != 0)
+                    {
+                        @if (!string.IsNullOrWhiteSpace(@ViewBag.CategoryImage))
+                        {
+                            <div>
+                                <img src="~/images/categories/@ViewBag.CategoryImage" style="width:200px; height:200px;border-radius:50px;" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <img src="~/images/noPhoto.png" style="width:200px; height:200px;border-radius:50px;" />
+                            </div>
+                        }
+                    }
+
+
+                    <input asp-for="File" type="file" class="form-control mt-2" />
+                </div>
+
+                <button type="submit" class="btn btn-success mt-3">@(Model.Id==0?"Kaydet":"Güncelle")</button>
+                <a asp-controller="Dashboard" asp-action="Index" class="btn btn-sm btn-primary mt-3" style="float:right">Geri Dön</a>
+            </form>
+        </div>
+    </div>
+</div>

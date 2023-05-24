@@ -1,0 +1,73 @@
+﻿@model List<FoodListModel>
+
+
+<div class="container">
+    <div class="container mt-3">
+        <h2 style="color:orangered" class="container">
+            @if (Model.Count == 0)
+            {
+                <div class="container">
+                    <div class="row">
+                        <div class="alert alert-danger">Henüz bir yemek eklenmemiştir!!!</div>
+                    </div>
+                </div>
+            }
+        </h2>
+    </div>
+</div>
+
+
+
+<div class="container">
+
+    <table class="table table-striped ">
+
+        <thead>
+
+            <tr>
+                <th style="width:400px">Yemek Resim</th>
+                <th style="width:400px">Yemek Adı</th>
+                <th style="width:400px">Kategori</th>
+            </tr>
+
+        </thead>
+
+        @foreach (var foods in Model)
+        {
+
+            <tbody>
+                <tr>
+                    <td>
+                        @if (string.IsNullOrWhiteSpace(foods.ImagePath))
+                        {
+                            <img src="~/images/noPhoto.png" style="width:120px; height:120px;border-radius:50px;" />
+                        }
+                        else
+                        {
+                            <img src="~/images/foods/@foods.ImagePath" alt="@foods.Name" style="width:120px; height:120px;border-radius:50px;" />
+                        }
+                    </td>
+
+                    <td style="justify-items:center">@foods.Name</td>
+                    <td style="justify-items:center">@foods.CategoryName</td>
+
+                    <td>
+                        <a asp-controller="FoodList" asp-action="Detail" asp-route-id="@foods.Id" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Ayrıntısı</a>
+
+                    </td>
+
+                </tr>
+
+
+
+            </tbody>
+        }
+    </table>
+
+</div>
+
+
+
+
+
+

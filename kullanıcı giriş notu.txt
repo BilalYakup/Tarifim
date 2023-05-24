@@ -1,0 +1,4 @@
+admin email: admin@tarifim.com
+şifre: 123
+user email: user@tarifim.com
+şifre:123
